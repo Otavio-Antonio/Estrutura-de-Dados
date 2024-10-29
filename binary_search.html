@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de Dados</title>
+</head>
+
+<body>
+    
+    <div style="display: flex;">
+        <div>
+
+        </div>
+        <!-- Form para aquisição de dados -->
+        <form id="myForm">
+            <h3>Busca Binaria:</h3>
+            <hr>
+            <!-- inserção do valor a ser procurado -->
+            <span>[1, 2, 3, 4, 6, 7, 8, 13, 42, 114, 223, 512, 893, 1042]</span><br><br>
+            <label for="value"> Qual a posição do valor:</label><br>
+            <input type="number" name="value" id="value"><br>
+            
+            <button type="button" onclick="binarySearch()">Buscar</button>
+        </form>
+
+        <!-- Espaço onde os dados serão exibidos -->
+        <div id="output" style="margin-left: 20px; border-left: 1px solid #ccc; padding-left: 20px;">
+            <p><strong>Resultado da busca: </strong><br><span id="outputValue"></span></p>
+        </div>
+    </div>
+
+    <script>
+
+        function binarySearch() {
+            let arr = [1, 2, 3, 4, 6, 7, 8, 13, 42, 114, 223, 512, 893, 1042];
+            var inpVal = +document.getElementById("value").value; //converte os valores de entrada para int
+            console.log(arr.length - 1)
+
+            var low = 0;
+            var high = arr.length - 1;
+
+            while (low <= high) {
+
+                var mid = parseInt((low + high) / 2);
+                var kick = arr[mid];
+                console.log(typeof kick, typeof inpVal)
+                if (kick === inpVal) {
+                    document.getElementById("outputValue").innerText = mid;
+                    return;
+                }
+                if (kick > inpVal) {
+                    high = mid - 1;
+                }
+                else {
+                    low = mid + 1
+                }
+            }
+            document.getElementById("outputValue").innerText = "Valor não encontrado!";
+        }
+    </script>
+
+</body>
+
+</html>
